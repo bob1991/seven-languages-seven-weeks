@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Blog Post - Start Bootstrap Template</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="../css/blog-post.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">Blog paradigma's</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="doel.html">Doel</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dag1.html">Dag 1</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dag2.html">Dag 2</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dag3.html">Dag 3</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="opdracht.html">De opdracht</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <div class="row">
+
+      <!-- Post Content Column -->
+      <div class="col-lg-12">
+
+        <!-- Title -->
+        <h1 class="mt-4">Dag 2</h1>
+
+        <!-- Author -->
+        <p class="lead">
+          by
+          <a href="#">Bob Kuipers</a>
+        </p>
+
+        <hr>
+        <!-- Preview Image -->
+        <img class="img-fluid rounded" src="http://placehold.it/1200x300" alt="">
+
+        <hr>
+
+        <!-- Post Content -->
+        <h2>Day 2: Clipping Bushes and Other New Tricks</h2>
+        <h3>val versus var</h3>
+        <p>
+          Val zorgt ervoor dat een variable immutable is dit houdt in dat een variable niet meer aangepast kan worden.
+          <code>
+            scala> var mutable = "I am mutable" <br>
+             mutable: java.lang.String = I am mutable
+          </code> <br>
+          Var zorgt voor variable die mutable zijn.
+          <code> <br>
+              scala> var mutable = "I am mutable" <br> 
+              mutable: java.lang.String = I am mutable
+          </code> <br>
+          Het liefst maak je gebruik van alleen maar immuatble variable zodat een variable nooit zomaar van buiten
+          aangepast kan worden.
+        </p>
+
+        <h3>Collections</h3>
+        <p>
+          In scala kan je net zoals in java gebruik maken van Lists <br>
+          §
+          scala> List(1, 2, 3) <br>
+          res4: List[Int] = List(1, 2, 3)
+          </code> <br>
+          Er zijn ook sets. Sets zijn lijsten zonder een specifieke volgorde.<br>
+          <code>
+              scala> val animals = Set("lions", "tigers", "bears")<br>
+               animals: scala.collection.immutable.Set[java.lang.String] =
+              Set(lions, tigers, bears)   
+          </code><br>
+          Toevoegen en verwijden van sets gaat gemakklijk je kan gebruik maken van de + en - operator.<br>
+
+          <code>
+              scala> val animals = Set("lions", "tigers", "bears") <br>
+              animals: scala.collection.immutable.Set[java.lang.String] =
+              Set(lions, tigers, bears) <br>
+          scala> animals + "armadillos" <br>
+          res25: scala.collection.immutable.Set[java.lang.String] =
+              Set(lions, tigers, bears, armadillos)      
+          </code> <br>
+
+          Net zoals java zijn er in scala ook maps beschikbaar. <br>
+          <code>
+              scala> val ordinals = Map(0 -> "zero", 1 -> "one", 2 -> "two") <br>
+              ordinals: scala.collection.immutable.Map[Int,java.lang.String] = <br>
+              Map(0 -> zero, 1 -> one, 2 -> two)
+          </code> <br>
+
+        </p>
+
+
+
+
+        <h3>Higher-order functions</h3>
+        <p>Haskell functies kunnen functies als parameter hebben en functies retourneren als waarde. Een functie die
+          een van deze twee doet heeft een higher order function.</p>
+        <h3>Currying</h3>
+        <p>Elke functie in Haskell heeft officieel maar één parameter. Dit vond ik raar om te lezen. Hoe kan ik dan
+          hiervoor verschillende functies gedefineerd hebben met meerdere parameters?
+          <br>
+          Haskell heeft hier een trucje voor bedacht genaamd curried functions. Het werkt als volgt: stel dat we de
+          functie 'max' nemen. Je zou zeggen dat deze twee parameters heeft en dan de gene teruggeeft die groter is.
+
+          Echter als we 'max 4 5' uitvoeren in Haskell, dan wordt er een functie gemaakt dat een parameter neemt en
+          retourneert óf '4', óf de parameter, afhankelijk welke de grootste is.
+          Dan wordt er '5' toegepast op de functie en dan wordt het juiste resultaat teruggegeven. Ik vond het lastig
+          om initieel te begrijpen maar het volgende voorbeeld hielp hierbij.
+          Deze twee functies doen namelijk hetzelfde:
+          <pre>
+                  <span>ghci> max 4 5</span>
+                  <span>ghci> (max 4) 5</span>
+              </pre>
+        </p>
+        <h3>Partially Applied Functions</h3>
+        <p>Als je een spatie tussen twee dingen stopt heet dat 'function application'. Je kunt de 'spatie' zien als een
+          soort operator dat de hoogste voorrang heeft.
+          Als we naar de type van de 'max' functie kijken, zien we dit: 'max :: (Ord a) => a -> a -> a'. Je zou dit
+          kunnen herschrijven als 'max :: (Ord a) => a -> (a -> a)'.
+          Je leest dat als: de functie 'max' neemt een a en retourneert een functie dat een a als parameter neemt en
+          een a retourneert.
+
+          Wat is hier nu handig aan? Het is dus zo dat als je een functie aanroept met meerdere parameters, dat je
+          tussentijds een 'partially applied' functie terugkrijgt.
+          Dit is eigenljk een functie dat een functie aanroept met de volgende parameter. Het volgende voorbeeld hielp
+          mij hierbij:
+
+          <pre>
+                  <span>multThree :: (Num a) => a -> a -> a -> a</span>  
+                  <span>multThree x y z = x * y * z  </span> 
+              </pre>
+          <p>Wat nu als we de functie 'multThree 3 5 9' uitvoeren? Dit kan je dus herschrijven naar ((multThree 3) 5)
+            9. Allereerst is 3 toegepast op de functie multThree, omdat ze gescheiden zijn door een spatie.
+            Dit maakt een functie met één paramater en retourneert een functie. Dan is 5 toegpast op die functie. Deze
+            maakt een functie dat een parameter neemt en dat vermenigvuldigd met 3 * 5.
+            Vervolgens is 9 toegepast tot die functie en is het resultaat 3 * 5 * 9 = 135. </p>
+        </p>
+        <h2>Opdrachten</h2>
+        <h3>Sorteren in Haskell</h3>
+        <p>Op dag 2 werd er gevraagd om een sorteeralgoritme te vinden in Haskell. Al gauw kwam ik op een voorbeeld van
+          quicksort:</p>
+        <pre>
+              <span>-- file: sort.hs</span>
+              <span>sort :: [Integer] -> [Integer]</span>
+              <span>sort [] = []</span>
+              <span>sort (pivot:rest) = sort smaller ++ [pivot] ++ sort greater</span>
+              <span>  where</span>
+              <span>      smaller = filter (\x -> x < pivot) rest</span> 
+              <span>      greater = filter (\x -> x >= pivot) rest</span>
+          </pre>
+        <p>Dit stukje code is echt ongelofelijk. Als ik dit stukje code vergelijk met mijn implementatie in Java dan is
+          dit echt een wereld van verschil.
+          Ik vind de implementatie in Haskell zoveel beter leesbaar dan mijn implementatie in Java! Maar hoe werkt dit
+          stukje code nou precies?
+          <br>
+          Deze functie heeft twee patterns: een functie waarin een lege array verwacht wordt en een functie waarin een
+          pivot en een array verwacht wordt.
+          De eerste pattern wordt gebruikt als base-case voor de recursie. De tweede is de daadwerkelijke quicksort.
+          <br>
+          De quicksort is een concatenatie van drie sub-lijsten: het resultaat van de sortering van alle elementen die
+          kleiner zijn dan de pivot, de pivot zelf en het resultaat van de sortering van alle elementen die groter zijn
+          dan de pivot.
+        </p>
+        <p><i>Write a sort that takes a list and returns a sorted list.</i></p>
+        <p>Sorteer een lijst. Ik heb hiervoor de quicksort van hierboven gebruikt. Deze staat ook in <code>opdrachten/day2/sort.hs</code></p>
+        <p><i> Write a sort that takes a list and a function that compares its two arguments and then returns a sorted
+            list.</i></p>
+        <p>Dit is dezelfde als hierboven behalve dat er nu een vergelijking met de functie tussen zit. De uitwerking
+          staat in <code>opdrachten/day2/sortCompare.hs</code></p>
+        <pre>
+            <span>sortBy function [] = []</span>
+            <span>sortBy function (pivot:rest) = sortBy function smaller ++ [pivot] ++ sortBy function greater</span>  
+            <span>  where</span>
+            <span>    smaller = filter (\x -> function x pivot < 0) rest</span>
+            <span>    greater = filter (\x -> function x pivot >= 0) rest</span>
+          </pre>
+        <p><i>Write a Haskell function to convert a string to a number. The string should be in the form of
+            $2,345,678.99 and can possibly have leading zeros.</i></p>
+        <p>We kunnen met <code>read</code> een type naar een ander type converteren. Hiervoor moeten we eerst de
+          komma's en de dollartekens weghalen. Zie ook <code>opdrachten/day2/convert.hs</code></p>
+        <pre>
+              <span>stringConverter :: String -> Float</span> 
+              <span>stringConverter string = read [result | result <- string, result /= ',', result /= '$']</span>
+          </pre>
+        <p><i>Write a function that takes an argument x and returns a lazy sequence that has every third number,
+            starting with x. Then, write a function that includes every ﬁfth number, beginning with y. Combine these
+            functions through composition to return every eighth number, beginning with x + y.</i></p>
+        <p>DIt is niet lastig te implementeren omdat Haskell oneindige lijsten kan aanmaken. Vervolgens kun je met de
+          magische methode <code>zipWith</code> alle resultaten van <code>everyThird</code> en <code>everyFifth</code>
+          met elkaar optellen. De uitwerking staat in <code>opdrachten/day2/lazy-sequence.hs</code></p>
+        <pre>
+            <span>everyThird :: Integer -> [Integer]</span>
+            <span>everyThird x = [x, x + 3..]</span>
+            <span></span>
+            <span>everyFifth :: Integer -> [Integer]</span> 
+            <span>everyFifth y = [y, y + 5..]</span>
+            <span></span>
+            <span>everyEight :: Integer -> Integer -> [Integer]</span>
+            <span>everyEight x y = zipWith (+) (everyThird x) (everyFifth y)</span>    
+          </pre>
+        <p><i>Use a partially applied function to deﬁne a function that will return half of a number and another that
+            will append \n to the end of any string.</i></p>
+        <p>Ik geloof dat dit het antwoord is dat ze willen. Dit zijn functies die de helft van een getal retourneren en
+          eentje die een \n aan het einde van een string plakt. Deze uitwerking staat in <code>opdrachten/day2/partial.hs</code></p>
+        <pre>
+            <span>half = (/ 2)</span>
+            <span>newLine = (++ "\n")</span>
+          </pre>
+        <hr>
+      </div>
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

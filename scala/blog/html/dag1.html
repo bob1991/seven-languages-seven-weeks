@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Blog Post - Start Bootstrap Template</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="../css/blog-post.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">Blog paradigma's</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="doel.html">Doel</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dag1.html">Dag 1</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dag2.html">Dag 2</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dag3.html">Dag 3</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="opdracht.html">De opdracht</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <div class="row">
+
+      <!-- Post Content Column -->
+      <div class="col-lg-12">
+
+        <!-- Title -->
+        <h1 class="mt-4">Dag 1</h1>
+
+        <!-- Author -->
+        <p class="lead">
+          by
+          <a href="#">Bob Kuipers</a>
+        </p>
+
+        <hr>
+        <!-- Post Content -->
+
+        <h2>Hoofdstuk 1</h2>
+        <p>
+          Scala is een hybride taal waarin zowel OO als functioneel geprogrameerd kan worden.
+          Daarmee wordt scala gezien als een belangrijke stap naar meer functioneel programmeren. Om de zoveel tijd
+          verschijnt
+          een nieuw paradigma die oude moet gaan vervangen. Omdat nieuwe paradigma's niet altijd meteen worden
+          geaccepteerd
+          zijn hybride talen in het begin het sterkst. Op deze manier kan men wennen aan een ander paradigma terwijl er
+          nog volop gebruik gemaakt kan worden van het oude vertrouwde.
+        </p>
+
+        <h2>Castle on the hill</h2>
+        <p>
+          Er worden referenties naar de film <i>Edward Scissorhands</i>. In de film is er een huis die oud en vervallen
+          is. Dit komt overeen met het OO paradigma wat uit stijl begint te raken.
+        </p>
+
+        <h3>Scala types</h3>
+        <p>
+          In tegenstelling tot Java is in scala iedere type een object. Scala maakt gebruik van sterk typering. Maar
+          probeert zelf
+          te casten wanneer het kan zo kan deze code
+        </p>
+        <p>
+          <code>scala> 4 + "1.0" </br>
+              res16: java.lang.String = 41.0
+            </code>
+          </br>
+          wel uitgevoerd worden maar
+          </br>
+          <code>
+              scala&gt; 4 * &quot;abc&quot;  <br>
+              &lt;console&gt;:5: error: overloaded method value * with alternatives (Double)Double &lt;and&gt; (Float)Float &lt;and&gt; (Long)Long &lt;and&gt; (Int)Int &lt;and&gt; (Char)Int
+              &lt;and&gt; (Short)Int &lt;and&gt; (Byte)Int cannot be applied to (java.lang.String)
+              4 * &quot;abc&quot; ^
+          </code>
+          niet.</br>
+          zo probeert scala de types zelf te casten maar wanneer het niet lukt wordt er een foutmelding getoond.
+
+
+        </p>
+
+
+        <h3>Ranges and Tuples</h3>
+        <p>
+          Wat niet ziet in Java zijn ranges en tuples die typsich zijn voor functionele talen.
+          Hieronder is een range te zien. </br>
+          <code>
+              scala> val range = 0 until 10 </br>
+              range: Range = Range(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+          </code>
+          </br>
+          Zoals je ziet kan scala zelf type eruit herkennen dit hoeft dus niet expliciet aangegeven te worden.
+          </br>
+          Tuples is een set van object met een vaste lengte. Een tuple kan verschillende types hebben.
+          </br>
+          <code>
+            scala> val person = ("Elvis", "Presley") </br>
+            person: (java.lang.String, java.lang.String) = (Elvis,Presley)
+          </code>
+        </p>
+
+        <h3>Classes, inhertance en interfaces</h3>
+        <p>
+          Scala heeft ook een OO kant zo kunnen classes worden aangemaakt. </br>
+          <code>
+              scala> class Person(firstName: String, lastName: String)
+          </code> </br>
+          Classes kunnen ook methodes bevatten. </br>
+          <code>
+              class Compass { </br>
+                val directions = List("north", "east", "south", "west") </br>
+                var bearing = 0 </br>
+                print("Initial bearing: ") println (direction) </br>
+              </br>
+                def direction() = directions(bearing)</br>
+              </br>
+                def inform(turnDirection: String) {</br>
+                  println("Turning " + turnDirection + ". Now bearing " + direction)</br>
+                }</br>
+              </br>
+                def turnRight() {</br>
+                  bearing = (bearing + 1) % directions.size inform ("right")</br>
+                }</br>
+              </br>
+                def turnLeft() {</br>
+                  bearing = (bearing + (directions.size - 1)) % directions.size inform ("left")</br>
+                }</br>
+              }</br>
+              
+          </code></br>
+        </p>
+
+        <h2>Opdrachten</h2>
+        <p>
+          Het tictacto spel heb ik uitgeprogrammeerd.
+
+          Voor het eerst programmeren in scala was even wennen. uberhaupt de syntax was vaak even terug lezen. Het
+          voelde ook aan alsof ik heel veel dingen makkeljker kon doen maar ik geen idee had van hoe het makkelijker
+          kon.
+
+          Voor mijn gevoel heb ik het probleem meer op een oude java of processing manier opgelost.
+
+          Heel veel randvoorwaarden in dit spel zijn nog niet geimplementeerd
+        </p>
+      </div>
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

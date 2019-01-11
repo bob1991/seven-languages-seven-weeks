@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Blog Post - Start Bootstrap Template</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="../css/blog-post.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Blog paradigma's</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="doel.html">Doel</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dag1.html">Dag 1</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dag2.html">Dag 2</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dag3.html">Dag 3</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="opdracht.html">De opdracht</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <div class="row">
+
+      <!-- Post Content Column -->
+      <div class="col-lg-12">
+
+        <!-- Title -->
+        <h1 class="mt-4">Het doel</h1>
+
+        <!-- Author -->
+        <p class="lead">
+          by
+          <a href="#">Bob Kuipers</a>
+        </p>
+
+        <hr>
+
+        <!-- Date/Time -->
+        <p>Posted on May 1, 2018</p>
+
+        <hr>
+
+        <!-- Preview Image -->
+        <img class="img-fluid rounded" src="http://placehold.it/1200x300" alt="">
+
+        <hr>
+
+        <!-- Post Content -->
+        <p class="lead">Het doel van deze opdracht is het zelfstandig verkennen van een nieuwe taal. Als je dit
+          zelfstandig kunt,kun je je blijven ontwikkelen en daarmee je range van gereedschappen als professioneel
+          programmeur vergroten. Het tweede doel is om de kennis die je daarbij opdoet op een toegankelijke manier te
+          leren delen met collega’s</p>
+
+        <h3>Instructies</h3>
+        <p>De opdracht bestaat concreet uit drie onderdelen:
+          <ol>
+            <li>Het kiezen van een taal/paradigma en je er op oriënteren met behulp van ”Seven languages in seven
+              weeks”</li>
+            <li>Het deﬁniëren van een eigen uitdaging en die uitprogrammeren in de gekozen taal.</li>
+            <li>Het schrijven van een reeks blog-posts over je ervaringen met de nieuwe taal.</li>
+          </ol>
+        </p>
+
+
+        <h3>Kiezen en oriënteren taal/paradigma</h3>
+        <p>De gekozen taal bestaat uit de volgende talen uit het Seven Languages in Seven Weeks boek: Prolog, Scala,
+          Erlang, Clojure of Haskell.
+          Ik vond het lastig om een programmeertaal te kiezen. Ik wilde graag een functionele taal uitproberen, omdat
+          dit paradigma voor mij compleet nieuw is.
+        </p>
+        <p>Al gauw kwam ik op twee candidaten: Haskell en Scala.
+          Scala bevat een stukje Object Georiënteerd programmeren en biedt de mogelijkheid om Java code te gebruiken.
+          Wat mij erg handig lijkt omdat er al zoveel gemaakt is en Java en alles backwards-compatible is heb ik
+          gekozen voor Scala.
+        </p>
+
+        <h3>De programmeerchallenge</h3>
+        <p>
+          Het was lastig om een challenge voor jezelf te bedenken. Ik wilde iets wat uitdagend, leuk maar wel haalbaar
+          was.
+          Na een tijdje denken leek het mij een goed idee om een sodoku solver te schrijven.
+        </p>
+        <h4>Sodoku</h4>
+        <p>
+          Een standaard Sudoku puzzel is een rooster dat bestaat uit 9 kleinere roosters die weer onderverdeeld zijn in
+          3 x 3 cellen. Zo krijg je een rooster met 9 x 9 lijnen en kolommen.
+          Het doel is dat iedere cel een cijfer van 1 tot 9 krijgt.
+          Elke lijn of rij mag maar 1 keer de cijfers 1 tot 9 bevatten.
+          Elke kolom mag maar 1 keer de cijfers 1 tot 9 bevatten.
+          Elk rooster of vierkantje mag een keer de cijfers 1 tot 9 bevatten.
+
+
+        </p>
+        <div class="col-sm-4">
+          <img class="img-fluid" src="images/sudokupuzzel.png">
+        </div>
+
+
+        <h4>De concrete opdracht</h4>
+        <p>Schrijf een programma die een sudoku oplost</p>
+        <p>
+          De business rules voor een sudoku zijn gegeven.
+
+          Voor het oplossen van een sudoku zijn er verschillende manieren.
+
+          Eerst ga ik door middel van een backtrack algoritme een sudoku laten oplossen.
+          Later zal ik nog een ander algoritme bedenken. Hoogst waarschijnlijk hoe ik zelf een sudoku oplos.
+          Door te kijken of dat er maar een mogelijkheid is om een nummer in te vullen zo ja dan vul je dit nummer in.
+          Door dit nummer in te vullen mag je deze op andere plekken niet meer gebruiken hierdoor kan de sudoku stap
+          voor stap worden opgelost.
+        </p>
+        <hr>
+      </div>
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

@@ -40,13 +40,13 @@ object Main {
     val solveSudokuBacktracking = new SolveSudokuBacktracking();
     val solveSudokuHumanMind = new SolveSudokuHumanMind();
 
-    solveSudokuBacktracking.startSolvingSudoku(gridSudoku2).foreach(row => {
-      row.foreach(value => {
-        print(value + " ")
-      })
-      println(" ")
-    });
-    println("\n\n")
+//    solveSudokuBacktracking.startSolvingSudoku(gridSudoku2).foreach(row => {
+//      row.foreach(value => {
+//        print(value + " ")
+//      })
+//      println(" ")
+//    });
+//    println("\n\n")
 
 
 
@@ -58,6 +58,8 @@ object Main {
     })
     println("\n\n")
   }
+
+
 
 
 

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Blog Post - Start Bootstrap Template</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="../css/blog-post.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Blog paradigma's</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="doel.html">Doel</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dag1.html">Dag 1</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dag2.html">Dag 2</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dag3.html">Dag 3</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="opdracht.html">De opdracht</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <div class="row">
+
+      <!-- Post Content Column -->
+      <div class="col-lg-12">
+
+        <!-- Title -->
+        <h1 class="mt-4">De opdracht</h1>
+
+        <!-- Author -->
+        <p class="lead">
+          by
+          <a href="#">Bob Kuipers</a>
+        </p>
+
+        <hr>
+
+        <!-- Date/Time -->
+        <p>Posted on May 1, 2018</p>
+
+        <hr>
+
+        <!-- Preview Image -->
+        <img class="img-fluid rounded" src="http://placehold.it/1200x300" alt="">
+
+        <hr>
+
+        <!-- Post Content -->
+        <p>Deze pagina zal mijn Programmeer uitdaging 'Sodoku Solver' verder toelichten. De code van de Sudoku Solver
+          is the vinden op <a href="https://github.com/bob1991/seven-languages-seven-weeks">github</a>.
+          De code is ook bijgevoegd deze is te vinden in de bijgevoegde map.
+        </p>
+
+        <h2>Sodoku grid</h2>
+        <p>
+          Voor de sudoku grid heb ik gekozen voor een twee dimensionale list van arrays.
+        </p>
+
+        <h2>Het verkrijgen van data</h2>
+        <p>Om een subreddit te bezoeken, wordt de naam van de subreddit achter <code>https://reddit.com/r/</code>
+          geplaatst. De url voor de ProgrammerHumor subreddit is <code>https://www.reddit.com/r/ProgrammerHumor</code>.
+          De meest populaire posts van die dag worden onder de categorie 'hot' geplaatst.</p>
+        <p>Door '.json' achter de url van een subreddit te plaatsen, wordt de json representatie van die subreddit
+          weergegven. Hierdoor is het mogelijk om met Haskell de data uit te lezen en deze weer te geven op een
+          html-pagina.
+          Uiteindelijk wordt de url als volgt: <code>https://www.reddit.com/r/ProgrammerHumor/hot/.json</code>. Met
+          deze resultaten kunnen we aan de slag.</p>
+
+        <h3>Het dataformaat</h3>
+        <p>Om de Reddit data te gebruiken, maak ik een Datatype aan. De constructor heeft 6 parameters, die allemaal
+          van het type Data.Text zijn.</p>
+        <img src="img/opdracht_2.PNG" alt="code">
+        <p>Ik heb Data.Text geïmporteerd als T, omdat er functies zijn van Data.Text die conflicteren met andere
+          functies. We zetten <code>deriving (Show)</code> achter het datatype zodat we dit datatype kunnen printen
+          naar de console</p>
+        <p>Een verzameling van Reddit Posts is een Listing, dus daar maak ik ook een datatype van.</p>
+        <img src="img/opdracht_3.PNG" alt="code">
+
+        <h3>Data ophalen bij Reddit</h3>
+        <p>Hieronder staat de code voor de <code>getReddit</code> methode. Deze methode verwacht een parameter
+          'subreddit' en retourneert een Listing van die subreddit.
+          Dit resultaat krijgen we door een simpele String concatenatie te doen door middel van de '<>' tekens.
+            Vervolgens kunnen we met </p>
+        <img src="img/opdracht_4.PNG" alt="code">
+
+        <h2>Opzetten van een webserver</h2>
+        <p>Om de data weer te kunnen geven in de browser, maak ik gebruik van het framework <a href="https://www.spock.li/">Spock</a>.
+          Met Spock is het heel gemakkelijk om een kleine webapplicatie op te zetten.
+          Hieronder volgt de code om de server op te zetten.</p>
+        <img src="img/opdracht_1.PNG" alt="code">
+        <p>De functie <code>startServer</code> doet een aantal dingen. Als eerste start het een HTTP server op <code>localhost:8080</code>.
+          Met de <code>$</code>-operator kunnen we methoden aan elkaar plakken.
+          Dit is zodat we niet zoveel haakjes hoeven te schrijven. Met <code>do get "reddits" $ do</code> maken we een
+          get actie aan genaamd 'reddit'.
+          Daarna kunnen we <code>reddits <- param "reddits"</code> maken we een get parameter aan genaamd reddits. We
+          kunnen dus nu de volgende url opbouwen: <code>localhost:8080/reddit?reddits={subredditnaam}</code>.</p>
+
+        <p>Met <code>Nothing -> text "No Reddits Provided"</code> kunnen we een error geven als er geen subreddits zijn
+          ingevuld. Als we dit in de browser checken dan zien we ook dat dit werkt.</p>
+        <img src="img/opdracht_5.PNG" alt="code">
+        <p>Als er vervolgens iets ingevuld is, kunnen we proberen om de bijbehorende subreddits op te zoeken.
+          We maken een lijst door de parameters van de url te splitten op een komma. Dit kan met de <code>splitOn "," reddits</code>
+          methode.
+          Met deze lijst kunnen we de data van de subreddits gaan ophalen.</p>
+        <h3>Het inladen van een subreddit</h3>
+        <p>Het onderstaande stukje code vind ik erg cool. De methode <code>getReddits</code> krijgt een lijst van
+          subreddits binnen en roept de <code>getReddit</code> methode aan die we eerder hebben gezien.
+          Echter gebeurt er nog iets. De methode <code>mapConcurrently</code> haalt voor elk item in de <code>reddits</code>
+          lijst de <code>listing</code> op. Dit proces verloopt asynchroon. De <code>mapConcurrently</code> methode
+          wacht tot hij alle subreddits heeft binnengehaald en vervolgens wordt het resultaat aan de <code>listings</code>
+          variabele gebonden.
+          Vervolgens roepen we <code>mergeListings</code> aan om alle resultaten te bundelen. Het resultaat van
+          mapConcurrenly is een <code>Listing</code>, maar geen <code>IO Listing</code>, deze zetten we om door middel
+          van de <code>pure</code> methode.</p>
+        <img src="img/opdracht_6.PNG" alt="code">
+        <hr>
+        <h3>Bundelen van de resultaten</h3>
+        <p>Na het inladen van de reddits bundelen we de resultaten met de <code>mergeListings</code> methode. In de
+          <code>getReddits</code> methode krijgen we een lijst met daarin een lijst van de resultaten van elke
+          subreddit.
+          Deze lijst van lijsten moet ik eerst omzetten naar een enkele lijst van alleen posts. Het leek mij
+          interessant om de posts van elke subreddit door elkaar heen te halen. Zo zie je niet de hele tijd alle posts
+          van één reddit achter elkaar.
+          De onderstaande afbeelding illustreert dit scenario. Aan de linkerzijde staan de lijsten van subreddits met
+          daarin alle posts. Aan de rechterzijde staat de enkele lijst van posts die door elkaar heen zijn gehaald.</p>
+        <img src="img/opdracht_7.PNG" alt="code">
+        <p>Door middel van de <code>mergeListings</code> methode wordt dit proces gerealiseerd. Om te beginnen halen we
+          alle posts uit de lijst van Listings. Dit kan met de <code>map</code> functie. </p>
+        <img src="img/opdracht_8.PNG" alt="code">
+        <p>Nu we alle posts hebben, gaan we de volgorde door elkaar halen. Dit kan met de <code>transpose</code>
+          functie.</p>
+        <img src="img/opdracht_9.PNG" alt="code">
+        <p>Nadat de lijsten door elkaar heen zijn gehaald, concateneren we alle lijsten bij elkaar zodat we één lijst
+          krijgen. Dit kan met de <code>concat</code> functie.</p>
+        <img src="img/opdracht_10.PNG" alt="code">
+        <p>Als we dit allemaal samenvoegen, krijgen we de functie <code>mergeListings</code>. </p>
+        <img src="img/opdracht_11.PNG" alt="code">
+        <h3>Het weergeven op de pagina</h3>
+        <p>Om de resultaten weer te geven maak ik gebruik van Bootstrap. De methode <code>bootstrap</code> laadt dit
+          simpelweg in als de stylesheet van de pagina.</p>
+        <img src="img/opdracht_12.PNG" alt="code">
+        <p>Om gemakkelijk gebruik te maken van Bootstrap, wordt de methode <code>colMd</code> het leven in geroepen.
+          Deze verwacht een integer en maakt hier de bijpassende Bootstrap column div bij.</p>
+        <img src="img/opdracht_13.PNG" alt="code">
+        <p>Vervolgens wil ik ook de Thumbnail bij de post tonen als deze bestaat. Hiervoor maak ik een methode die de
+          URL van een afbeelding verwacht. Daarna maak ik een variabele die ervoor zorgt dat er in een Bootstrap column
+          1 een afbeelding wordt gegenereerd.
+          De afbeelding wordt alleen gerenderd als deze bestaat. Dit kan ik checken door <code>T.breakOn</code> te
+          gebruiken op '://'. Als het resultaat hiervan 'http' of 'https' is, dan zal het een afbeelding zijn. Is dit
+          niet het geval, dan render ik een lege column.
+          In Haskell kan ik in een case block met '_' aangeven dat alle overige gevallen behandeld worden.
+        </p>
+        <img src="img/opdracht_14.PNG" alt="code">
+        <p>Nu kan ik een post gaan renderen. In de methode <code>renderPost</code> kan ik de 'do'-syntax gebruiken om
+          een HTML pagina te maken.
+          Het eerste stuk van de Post zal een afbeelding en de titel bevatten. De titel linkt gelijk door naar de
+          inhoud van de Post. Het tweede stuk zal Score, Subreddit en Auteur weergeven.</p>
+        <img src="img/opdracht_15.PNG" alt="code">
+        <p>Om alle Posts van een Listing te renderen wordt de <code>viewListing</code> methode gebruikt. Deze voert een
+          map-functie waarmee <code>renderPost</code> wordt aangeroepen op elke Post in een Listing.
+          Hier komt een lijst van HTML types uit (dus [HTML]). Dit is niet wat we nodig hebben. De webpagina bestaat
+          namelijk uit één HTML type. Om hier één HTML type van te maken, wordt de methode <code>mconcat</code>
+          gebruikt.
+          Deze voegt alle HTML types samen.
+        </p>
+        <h2>Het resultaat</h2>
+        <p>Na dit allemaal is het eindelijk mogelijk om de Subreddits in te laden. Ik laad het bestand <code>RedditReader.hs</code>
+          in met GHCI en ik voer de methode <code>startServer</code> uit.
+          Vervolgens typ ik in de browser <code>localhost:8080/reddit?reddits=ProgrammerHumor,Funny,Netherlands</code>
+          en alle subreddits worden ingeladen! Zie hieronder het resultaat.</p>
+        <img src="img/opdracht_16.PNG" alt="code">
+        <h2>Terugblik</h2>
+        <p>Ik ben tevreden met resultaat van de Programmeerchallenge. De Reddit Reader was leuk om te maken en ik vond
+          dat het een aantal dingen van Haskell goed naar voren bracht.
+          Ik vond met name de methode <code>mergeListings</code> het interessants. Toen ik het proces van samenvoegen
+          had uitgedacht, was het programmeren een fluitje van een cent. Ik zocht de bijbehorende functies op zoals
+          <code>transpose</code> en <code>concat</code> en het werkt allemaal magisch met elkaar.
+          Ook de methode <code>renderPost</code> vond ik interessant. De manier om dit op te schrijven met de <code>do</code>-syntax
+          is erg leesbaar in mijn ogen.
+        </p>
+        <p>Toch vond ik Haskell een lastige taal om in te programmeren. Toen ik klaar was met de drie dagen uit het
+          Seven Languages in Seven Weeks boek, had ik echt het idee dat ik nog niks met de taal kon.
+          Pas na een aantal tutorials op het internet voelde ik me pas klaar om iets te graan programmeren. In
+          verhouding tot Java is Haskell niet echt een populaire taal, dus ik vond het ook lastig om goede voorbeelden
+          te vinden als ik ergens niet uitkwam.
+          Ook werden er in de codevoorbeelden veel gebruik gemaakt van variabelen met een enkele letter. Hierdoor vond
+          ik vaak lastig om te lezen wat er nu allemaal gebeurt.
+        </p>
+        <p>Deze opdracht heeft mij veel geleerd. Doordat je in Haskell niet kan terugvallen op for-loops of objecten,
+          ben je verplicht op een functionele manier de problemen op te lossen.
+          Met name de methodes die operaties op arrays uitvoeren vond ik heel erg interessant. Als ik dan kijk hoeveel
+          moeite het kost om dit in Java te doen dan ben ik toch echt wel onder de indruk van de mogelijkheden met
+          Haskell.
+        </p>
+      </div>
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

@@ -7,14 +7,14 @@ class Sudoku {
     val updatedRow = grid(row).updated(column, valueToEnter);
     val updatedGrid = grid.updated(row, updatedRow);
 
-//    grid.foreach(row =>
-//    {
-//      row.foreach(value => {
-//        print(value + " ")
-//      })
-//      println(" ")
-//    });
-//    println("\n\n")
+    grid.foreach(row =>
+    {
+      row.foreach(value => {
+        print(value + " ")
+      })
+      println(" ")
+    });
+    println("\n\n")
 
     updatedGrid
   }

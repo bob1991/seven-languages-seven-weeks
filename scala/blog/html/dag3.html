@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Blog Post - Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/blog-post.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Blog paradigma's</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="doel.html">Doel</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="dag1.html">Dag 1</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="dag2.html">Dag 2</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="dag3.html">Dag 3</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="opdracht.html">De opdracht</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-12">
+
+          <!-- Title -->
+          <h1 class="mt-4">Dag 3</h1>
+
+          <!-- Author -->
+          <p class="lead">
+            by
+            <a href="#">Bob Kuipers</a>
+          </p>
+
+          <hr>
+
+          <!-- Date/Time -->
+          <p>Posted on May 1, 2018</p>
+
+          <hr>
+
+          <!-- Preview Image -->
+          <img class="img-fluid rounded" src="http://placehold.it/1200x300" alt="">
+
+          <hr>
+
+          <!-- Post Content -->
+          <h2>Stof</h2>
+          <h3>Klassen en Typen</h3>
+          <p>Volgens het boek is het Type-systeem van Haskell een van de beste features van de taal.</p>
+          <h4>Basic Types</h4>
+          <p>Door in <code>GHCI</code> het commando <code>:set +t</code> in te voeren, krijg je het type te zien van elk statement.</p>
+          <pre>
+            <span>Prelude> 'c'</span>
+            <span>'c'</span>
+            <span>it :: Char</span>
+            <span>Prelude> "abc"</span>
+            <span>"abc"</span>
+            <span>it :: [Char]</span>
+            <span>Prelude> ['a', 'b', 'c']</span>
+            <span>"abc"</span>
+            <span>it :: [Char]</span>
+          </pre>
+          <p>Je kunt '::' lezezn als <i>is een type van</i>. In Haskell is een Char een primitief type. Een string is een array van Char's. 
+          In Haskell wordt er geen onderscheid gemaakt tussen een array van Char's of een 'string' met aanhalingstekens</p>
+          <pre>
+            <span>Prelude> "abc" == ['a', 'b', 'c']</span>
+            <span>True</span>
+          </pre>
+          <h4>User Defined Types</h4>
+          <p>Het is natuurlijk ook mogelijk om je eigen types te maken in Haskell. Dit kan met het <code>data</code> keyword. Je kunt bijvoorbeeld een type Boolean maken op deze manier: </p>
+          <pre>
+            <span>data Boolean = True | False</span>
+          </pre>
+          <p>Hier staat dus dat een boolean één waarde kan hebben. Deze waarde is óf True, óf False.</p>
+          <h4>Monads</h4>
+          <p>Dit onderwerp is lastig. Ik heb na de beschrijving van Seven Languages in Seven Weeks nog een aantal tutorials bekeken om Monads te begrijpen.</p>
+          <p>Het boek komt met een voorbeeld van een Dronken Piraat. Stel je voor dat er een piraat is dat een schatkaart moet maken. Hij is dronken, dus hij kiest een bekend punt en 
+            beweegt door middel van wankelen (stagger) en kruipen (crawl) naar de schat toe. </p>
+            <p>Een stagger beweegt twee stappen en een crawl beweegt één stap. In een imperatieve taal kan je de statements achter elkaar opschrijven. Hierbij is 'v' de waarde dat de afstand bevat van het originele punt.
+              Hieronder een voorbeeld:
+            </p>
+            <pre>
+              <span>def treasure_map</span>
+              <span>  v = stagger(v)</span>
+              <span>  v = stagger(v)</span>
+              <span>  v = crawl(v)</span>
+              <span>  return ( v )</span>
+              <span>end</span>
+            </pre>
+            <p>We hebben dus meerdere functies die aangeroepen worden binnen treasure_map dat onze state (de afstand) aanpast. Het probleem is dus dat we een muteerbare state hebben. 
+              Om dit probleem op te lossen in Haskell zouden we het volgende opschrijven:
+            </p>
+            <pre>
+              <span>stagger :: (Num t) => t -> t</span>
+              <span>stagger d = d + 2</span>
+              <span>crawl d = d + 1</span>
+              <span>treasureMap d = </span>
+              <span>  crawl (</span>
+              <span>  stagger (</span>
+              <span>  stagger d))</span>
+            </pre>
+            <p>Dit is dus onhandig om te lezen. De statements zijn namelijk verkeerd om beschreven. We willen dus eigenlijk dat je de statements sequentieel kan opschrijven. We kunnen hiervoor een <code>let</code> expressie voor gebruiken:</p>
+            <pre>
+              <span>letTreasureMap (v, d) = let d1 = stagger d</span>
+              <span>                            d2 = stagger d1</span>
+              <span>                            d3 = crawl d2</span>
+              <span>                          in d3</span>
+            </pre>
+            Note to self: schrijf het stukje over Monads nog verder uit.
+          <h2>Opdrachten</h2>
+          <p>Ik vond de opdrachten van deze dag extreem lastig. Met wat hulp kon ik de eerste opdracht oplossen. De rest van de opdrachten vond ik te lastig en heb daarom ik ook niet gemaakt.</p>
+          <p><i>Write a function that looks up a hash table value that uses the Maybe monad. Write a hash that stores other hashes, several levels deep. Use the Maybe monad to retrieve an element for a hash key several levels deep</i></p>
+          <p>De uitwerking van deze opdracht staat in <code>opdrachten/day3/hash.hs</code></p>
+          <pre>
+            <span>fetch key [] = Nothing</span>
+            <span>fetch key ((k, value):rest)</span> 
+            <span>  | key == k = Just value</span> 
+            <span>  | otherwise = fetch key rest</span>
+          </pre>
+          <p>In deze functie wordt er over een lijst van key pairs geïtereerd en als de waarde is gevonden, wordt deze geretourneerd. Als de lijst leeg is dan wordt er <code>Nothing</code> teruggegeven.</p>
+          <hr>
+        </div>
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>
