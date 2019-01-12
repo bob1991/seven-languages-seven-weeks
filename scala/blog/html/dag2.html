@@ -95,19 +95,30 @@
         </p>
 
         <h3>Collections</h3>
+        <br>
+        <h4>List</h4>
         <p>
-          In scala kan je net zoals in java gebruik maken van Lists <br>
-          §
-          scala> List(1, 2, 3) <br>
+          Net zoals in veel functionele talen zijn collections belangrijk. In scala zijn List, Set en maps de meest
+          belangrijke collections
+          <br>
+          <br>
+          Net zoals in veel functionele talen is List de meest basis collection. List zijn geordende collecties van een
+          soort element
+
+          In onderstaande code is een voorbeeld van een List.
+          <code scala> List(1, 2, 3) <br>
           res4: List[Int] = List(1, 2, 3)
           </code> <br>
-          Er zijn ook sets. Sets zijn lijsten zonder een specifieke volgorde.<br>
+        </p>
+        <h4>Sets</h4>
+        <p>
+          In scala zijn er ook nog sets lijkt op een list maar een set heeft geen specifieke volgorde.
           <code>
               scala> val animals = Set("lions", "tigers", "bears")<br>
                animals: scala.collection.immutable.Set[java.lang.String] =
               Set(lions, tigers, bears)   
           </code><br>
-          Toevoegen en verwijden van sets gaat gemakklijk je kan gebruik maken van de + en - operator.<br>
+          Toevoegen en verwijden van sets gaat gemakklijk, je kan gebruik maken van de + en - operator.<br>
 
           <code>
               scala> val animals = Set("lions", "tigers", "bears") <br>
@@ -117,133 +128,132 @@
           res25: scala.collection.immutable.Set[java.lang.String] =
               Set(lions, tigers, bears, armadillos)      
           </code> <br>
-
-          Net zoals java zijn er in scala ook maps beschikbaar. <br>
+        </p>
+        <h4>Maps</h4>
+        <p>
+          Net zoals java zijn er in scala ook maps beschikbaar. De syntax is een beetje anders maar verder lijkt het
+          veel op elkaar.<br>
           <code>
               scala> val ordinals = Map(0 -> "zero", 1 -> "one", 2 -> "two") <br>
               ordinals: scala.collection.immutable.Map[Int,java.lang.String] = <br>
               Map(0 -> zero, 1 -> one, 2 -> two)
           </code> <br>
-
         </p>
 
+        <h3>Collections and function</h3>
+        <p>
+          Waar veel functionele talen zich mee onderscheiden is de manieren om met collecties om te gaan.
+          Op de collecties van scala zitten een aantal handige functies om met data om te gaan.
+        </p>
+        <h4>
+          foreach.
+        </h4>
+        <p>
+          De foreach is zoals in vele talen het werkpaard om om te gaan met data. De syntax die scala heeft voor de
+          foreach is in het
+          begin en beetje wennen, maar als je er aan gewend bent voelt hij op een of andere manier heel fijn aan.
+          Hierbij merk ik dat andere talen dit steeds meer overnemen in c# kan tegenwoordig LinQ worden gebruikt
+          waarbij ongeveer dezelfde syntax wordt gebruikt.<br>
+          In de code hieronder zie je hoe de for each gebruikt wordt.
 
 
+        </p>
+        <p>
+          <code>
+            scala> val list = List("frodo", "samwise", "pippin")<br>
+            list: List[java.lang.String] = List(frodo, samwise, pippin)<br>
+            <br>
+            scala> list.foreach(hobbit => println(hobbit)) <br>
+            frodo <br>
+            samwise <br>
+            pippin <br>
+          </code>
+        </p>
+        <h4>count, map, filter, and Others</h4>
+        <p>
+          Zoals met for each data binnen een collectie gemanipuleerd kan worden zijn er nog verschillende andere
+          functies.
+          Waarbij iedere element van de collectie als input wordt gebruikt.
+          Omdat de collecties immutable zijn wordt de orginele collectie nooit aangepast er wordt altijd een nieuwe
+          collectie gemaakt.
+        </p>
+        <code>
+            scala> val words = List("peg", "al", "bud", "kelly") <br>
+            words: List[java.lang.String] = List(peg, al, bud, kelly)<br>
+            <br>
+            scala> words.count(word => word.size > 2) <br>
+            res43: Int = 3 <br>
+            <br>
+            scala> words.filter(word => word.size > 2) <br>
+            res44: List[java.lang.String] = List(peg, bud, kelly)<br> 
+            <br>
+            scala> words.map(word => word.size) <br>
+            res45: List[Int] = List(3, 2, 3, 5)<br>
+            <br>
+            scala> words.forall(word => word.size > 1) <br>
+            res46: Boolean = true <br>
+            <br>
+            scala> words.exists(word => word.size > 4) <br>
+            res47: Boolean = true <br>
+            <br>
+            scala> words.exists(word => word.size > 5) <br>
+            res48: Boolean = false <br>
+            <br>
 
-        <h3>Higher-order functions</h3>
-        <p>Haskell functies kunnen functies als parameter hebben en functies retourneren als waarde. Een functie die
-          een van deze twee doet heeft een higher order function.</p>
-        <h3>Currying</h3>
-        <p>Elke functie in Haskell heeft officieel maar één parameter. Dit vond ik raar om te lezen. Hoe kan ik dan
-          hiervoor verschillende functies gedefineerd hebben met meerdere parameters?
+        </code>
+        <p>
+          De count functie telt het aantal elementen die voldoen aan een conditie.
           <br>
-          Haskell heeft hier een trucje voor bedacht genaamd curried functions. Het werkt als volgt: stel dat we de
-          functie 'max' nemen. Je zou zeggen dat deze twee parameters heeft en dan de gene teruggeeft die groter is.
-
-          Echter als we 'max 4 5' uitvoeren in Haskell, dan wordt er een functie gemaakt dat een parameter neemt en
-          retourneert óf '4', óf de parameter, afhankelijk welke de grootste is.
-          Dan wordt er '5' toegepast op de functie en dan wordt het juiste resultaat teruggegeven. Ik vond het lastig
-          om initieel te begrijpen maar het volgende voorbeeld hielp hierbij.
-          Deze twee functies doen namelijk hetzelfde:
-          <pre>
-                  <span>ghci> max 4 5</span>
-                  <span>ghci> (max 4) 5</span>
-              </pre>
-        </p>
-        <h3>Partially Applied Functions</h3>
-        <p>Als je een spatie tussen twee dingen stopt heet dat 'function application'. Je kunt de 'spatie' zien als een
-          soort operator dat de hoogste voorrang heeft.
-          Als we naar de type van de 'max' functie kijken, zien we dit: 'max :: (Ord a) => a -> a -> a'. Je zou dit
-          kunnen herschrijven als 'max :: (Ord a) => a -> (a -> a)'.
-          Je leest dat als: de functie 'max' neemt een a en retourneert een functie dat een a als parameter neemt en
-          een a retourneert.
-
-          Wat is hier nu handig aan? Het is dus zo dat als je een functie aanroept met meerdere parameters, dat je
-          tussentijds een 'partially applied' functie terugkrijgt.
-          Dit is eigenljk een functie dat een functie aanroept met de volgende parameter. Het volgende voorbeeld hielp
-          mij hierbij:
-
-          <pre>
-                  <span>multThree :: (Num a) => a -> a -> a -> a</span>  
-                  <span>multThree x y z = x * y * z  </span> 
-              </pre>
-          <p>Wat nu als we de functie 'multThree 3 5 9' uitvoeren? Dit kan je dus herschrijven naar ((multThree 3) 5)
-            9. Allereerst is 3 toegepast op de functie multThree, omdat ze gescheiden zijn door een spatie.
-            Dit maakt een functie met één paramater en retourneert een functie. Dan is 5 toegpast op die functie. Deze
-            maakt een functie dat een parameter neemt en dat vermenigvuldigd met 3 * 5.
-            Vervolgens is 9 toegepast tot die functie en is het resultaat 3 * 5 * 9 = 135. </p>
-        </p>
-        <h2>Opdrachten</h2>
-        <h3>Sorteren in Haskell</h3>
-        <p>Op dag 2 werd er gevraagd om een sorteeralgoritme te vinden in Haskell. Al gauw kwam ik op een voorbeeld van
-          quicksort:</p>
-        <pre>
-              <span>-- file: sort.hs</span>
-              <span>sort :: [Integer] -> [Integer]</span>
-              <span>sort [] = []</span>
-              <span>sort (pivot:rest) = sort smaller ++ [pivot] ++ sort greater</span>
-              <span>  where</span>
-              <span>      smaller = filter (\x -> x < pivot) rest</span> 
-              <span>      greater = filter (\x -> x >= pivot) rest</span>
-          </pre>
-        <p>Dit stukje code is echt ongelofelijk. Als ik dit stukje code vergelijk met mijn implementatie in Java dan is
-          dit echt een wereld van verschil.
-          Ik vind de implementatie in Haskell zoveel beter leesbaar dan mijn implementatie in Java! Maar hoe werkt dit
-          stukje code nou precies?
+          Filter maakt een nieuwe collectie waarbij de elementen die niet aan een conditie voldoen eruit worden
+          gefilterd.
           <br>
-          Deze functie heeft twee patterns: een functie waarin een lege array verwacht wordt en een functie waarin een
-          pivot en een array verwacht wordt.
-          De eerste pattern wordt gebruikt als base-case voor de recursie. De tweede is de daadwerkelijke quicksort.
+          Map maakt een nieuwe collectie waar de gegeven waarde gemapt wordt naar een andere waarde.
           <br>
-          De quicksort is een concatenatie van drie sub-lijsten: het resultaat van de sortering van alle elementen die
-          kleiner zijn dan de pivot, de pivot zelf en het resultaat van de sortering van alle elementen die groter zijn
-          dan de pivot.
+          De forall functie kijkt of iedere element in een collectie voldoet aan een gegeven conditie.
+          <br>
+          De exist bekijkt of minimaal 1 element voldoet aan een conditie.
+          <br>
         </p>
-        <p><i>Write a sort that takes a list and returns a sorted list.</i></p>
-        <p>Sorteer een lijst. Ik heb hiervoor de quicksort van hierboven gebruikt. Deze staat ook in <code>opdrachten/day2/sort.hs</code></p>
-        <p><i> Write a sort that takes a list and a function that compares its two arguments and then returns a sorted
-            list.</i></p>
-        <p>Dit is dezelfde als hierboven behalve dat er nu een vergelijking met de functie tussen zit. De uitwerking
-          staat in <code>opdrachten/day2/sortCompare.hs</code></p>
-        <pre>
-            <span>sortBy function [] = []</span>
-            <span>sortBy function (pivot:rest) = sortBy function smaller ++ [pivot] ++ sortBy function greater</span>  
-            <span>  where</span>
-            <span>    smaller = filter (\x -> function x pivot < 0) rest</span>
-            <span>    greater = filter (\x -> function x pivot >= 0) rest</span>
-          </pre>
-        <p><i>Write a Haskell function to convert a string to a number. The string should be in the form of
-            $2,345,678.99 and can possibly have leading zeros.</i></p>
-        <p>We kunnen met <code>read</code> een type naar een ander type converteren. Hiervoor moeten we eerst de
-          komma's en de dollartekens weghalen. Zie ook <code>opdrachten/day2/convert.hs</code></p>
-        <pre>
-              <span>stringConverter :: String -> Float</span> 
-              <span>stringConverter string = read [result | result <- string, result /= ',', result /= '$']</span>
-          </pre>
-        <p><i>Write a function that takes an argument x and returns a lazy sequence that has every third number,
-            starting with x. Then, write a function that includes every ﬁfth number, beginning with y. Combine these
-            functions through composition to return every eighth number, beginning with x + y.</i></p>
-        <p>DIt is niet lastig te implementeren omdat Haskell oneindige lijsten kan aanmaken. Vervolgens kun je met de
-          magische methode <code>zipWith</code> alle resultaten van <code>everyThird</code> en <code>everyFifth</code>
-          met elkaar optellen. De uitwerking staat in <code>opdrachten/day2/lazy-sequence.hs</code></p>
-        <pre>
-            <span>everyThird :: Integer -> [Integer]</span>
-            <span>everyThird x = [x, x + 3..]</span>
-            <span></span>
-            <span>everyFifth :: Integer -> [Integer]</span> 
-            <span>everyFifth y = [y, y + 5..]</span>
-            <span></span>
-            <span>everyEight :: Integer -> Integer -> [Integer]</span>
-            <span>everyEight x y = zipWith (+) (everyThird x) (everyFifth y)</span>    
-          </pre>
-        <p><i>Use a partially applied function to deﬁne a function that will return half of a number and another that
-            will append \n to the end of any string.</i></p>
-        <p>Ik geloof dat dit het antwoord is dat ze willen. Dit zijn functies die de helft van een getal retourneren en
-          eentje die een \n aan het einde van een string plakt. Deze uitwerking staat in <code>opdrachten/day2/partial.hs</code></p>
-        <pre>
-            <span>half = (/ 2)</span>
-            <span>newLine = (++ "\n")</span>
-          </pre>
+
+        <h2>
+          Opdrachten
+        </h2>
+        <br>
+
+        <h3>Gebruik fold left om de totale groten te berkenen van een lijst van strings</h3>
+
+        <p>
+          In het boek staat al een voorbeeld van fold left hierb worden alle elementen van een list bij elkaar
+          opgeteld.
+          <br>
+          Ongeveer dezelfde methode heb ik gebruikt voor het berekenen van de totale waarde van strings in een lijst.
+          zie onderstaande code. De code is te vinden in dit <a href="../../day-2/fold-left/">project</a>
+          <br> <code>
+              val list = List("first item","second item","third item"); <br>
+
+              val value = list.foldLeft(0)((value,item) => value + item.size);
+          </code>
+        </p>
+        <h3>Schrijf een trait die de scheld woorden Shoot en Dan in een lijst vervangen naar Puky and Beans</h3>
+        <p>
+          Het was in het begin even uitzoeken hoe een trait het beste aangeroepen kon worden. Maar na even wat
+          uitproberen was het gelukt.
+          De code is te vinden in hetzelfde <a href="../../day-2/fold-left/">project</a> als foldleft
+        </p>
+        <h3>
+          Laad de cursewords in via een file.
+        </h3>
+        <p>
+          Om de cursewords in te laden wilde eerst gebruik maken van json formatting omdat ik verwacht had dat in scala
+          zelf wel iets zou zitten om met json om te gaan.
+
+          Het kan wel maar helaas moeten daar externe libraries voor ingeladen worden.
+
+          Uiteindelijk heb ik er voor gekozen om gewoon een stand .txt bestand in te laden.
+          De code is te vinden in hetzelfde <a href="../../day-2/fold-left/">project</a> als foldleft
+
+        </p>
+
         <hr>
       </div>
     </div>

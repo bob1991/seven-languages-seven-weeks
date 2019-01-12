@@ -1,5 +1,4 @@
 import scala.collection.mutable.Stack
-import scala.reflect.internal.util.TableDef.Column
 
 /**
   * Created by bobkuipers on 03/01/2019.
@@ -58,20 +57,6 @@ object Main {
     })
     println("\n\n")
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
+
+

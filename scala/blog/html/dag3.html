@@ -1,93 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <title>Blog Post - Start Bootstrap Template</title>
+  <title>Blog Post - Start Bootstrap Template</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="../css/blog-post.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="../css/blog-post.css" rel="stylesheet">
 
-  </head>
+</head>
 
-  <body>
+<body>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="#">Blog paradigma's</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="../index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="doel.html">Doel</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="dag1.html">Dag 1</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="dag2.html">Dag 2</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="dag3.html">Dag 3</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="opdracht.html">De opdracht</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Page Content -->
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
+      <a class="navbar-brand" href="#">Blog paradigma's</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="doel.html">Doel</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dag1.html">Dag 1</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dag2.html">Dag 2</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dag3.html">Dag 3</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="opdracht.html">De opdracht</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-      <div class="row">
+  <!-- Page Content -->
+  <div class="container">
 
-        <!-- Post Content Column -->
-        <div class="col-lg-12">
+    <div class="row">
 
-          <!-- Title -->
-          <h1 class="mt-4">Dag 3</h1>
+      <!-- Post Content Column -->
+      <div class="col-lg-12">
 
-          <!-- Author -->
-          <p class="lead">
-            by
-            <a href="#">Bob Kuipers</a>
-          </p>
+        <!-- Title -->
+        <h1 class="mt-4">Dag 3</h1>
 
-          <hr>
+        <!-- Author -->
+        <p class="lead">
+          by
+          <a href="#">Bob Kuipers</a>
+        </p>
+        <hr>
 
-          <!-- Date/Time -->
-          <p>Posted on May 1, 2018</p>
+        <!-- Preview Image -->
+        <img class="img-fluid rounded" src="http://placehold.it/1200x300" alt="">
 
-          <hr>
+        <hr>
 
-          <!-- Preview Image -->
-          <img class="img-fluid rounded" src="http://placehold.it/1200x300" alt="">
+        <!-- Post Content -->
+        <h2>Day 3: Cutting Through the Fluff</h2>
+        <h3>XML</h3>
+        <p>
+          In dag 3 wordt uitgelegd hoe goed xml is te gebruiken in scala.
+          Aangezien json steeds populairder wordt en de populariteit van xml af neemt heb ik me hier niet al te veel
+          inverdiept.
+          populariteit is te vinden op <a href="https://twobithistory.org/2017/09/21/the-rise-and-rise-of-json.html">populariteit
+            josn xml</a>
+        </p>
+        <h3>Pattern matching</h3>
+        <h4>Case</h4>
+        <p>In scala is het mogelijk om functies te schrijven waarbij een stuk code wordt uigevoerd als die aan een
+          conditie voldoet <br>
+          <code>
+              def doChore(chore: String): String = chore match { <br>
+                case "clean dishes" => "scrub, dry" <br>
+              case "cook dinner" => "chop, sizzle" <br>
+              case _ => "whine, complain" <br>
+              } <br>
+              println(doChore("clean dishes")) <br>
+              println(doChore("mow lawn")) <br>
+          </code>
+        </p>
+        <h4>Guards</h4>
+        <p>
+          Wat veel gebeurt in functionele talen is recursie omdat recursie een base case nodig heeft om te slagen zijn
+          guards ideaal.
+          De meest gebruikte methode om recusrie aan te tonen is factorial in scala ziet dat eruit als volgt.
+          <br>
+          <code>
+              def factorial(n: Int): Int = n match { <br>
+                case 0 => 1 <br>
+                case x if x > 0 => factorial(n - 1) * n <br>
+              } <br>
+              
+          </code>
+        </p>
+        <h4>Concurrency en Actors</h4>
+        <p>
+          In het boek wordt er gebruik gemaakt van de Actor class die sinds scala 2.10 deprected is.
+          Om het zelfde voor elkaar te krijgen moet er gebruik worden gemaakt van neiuwe classes.
+          <a href="https://docs.scala-lang.org/overviews/core/actors-migration-guide.html">Nieuwe actor</a>
+          <br>
+        </p>
+        <h2>
+          Opdrachten
+        </h2>
+        <p>
+          Omdat de code die gebruikt moet worden voor deze opdracht heb ik gekzoen om deze opdracht niet te maken. Dit
+          had er ook mee te maken dat ik al een en ander uitgezocht had over de sudoku solver.
+          Door het een en ander uit te zoeken ben ik enthiousiast gewordren om een oplossing te implementeren en te
+          bedenken. Deze odprachten heb ik dus overgeslagen en ben aan mijn sudoku sovler begonnen.
+        </p>
 
-          <hr>
 
-          <!-- Post Content -->
-          <h2>Stof</h2>
-          <h3>Klassen en Typen</h3>
-          <p>Volgens het boek is het Type-systeem van Haskell een van de beste features van de taal.</p>
-          <h4>Basic Types</h4>
-          <p>Door in <code>GHCI</code> het commando <code>:set +t</code> in te voeren, krijg je het type te zien van elk statement.</p>
-          <pre>
+        <h3>Klassen en Typen</h3>
+        <p>Volgens het boek is het Type-systeem van Haskell een van de beste features van de taal.</p>
+        <h4>Basic Types</h4>
+        <p>Door in <code>GHCI</code> het commando <code>:set +t</code> in te voeren, krijg je het type te zien van elk
+          statement.</p>
+        <pre>
             <span>Prelude> 'c'</span>
             <span>'c'</span>
             <span>it :: Char</span>
@@ -98,26 +148,31 @@
             <span>"abc"</span>
             <span>it :: [Char]</span>
           </pre>
-          <p>Je kunt '::' lezezn als <i>is een type van</i>. In Haskell is een Char een primitief type. Een string is een array van Char's. 
+        <p>Je kunt '::' lezezn als <i>is een type van</i>. In Haskell is een Char een primitief type. Een string is een
+          array van Char's.
           In Haskell wordt er geen onderscheid gemaakt tussen een array van Char's of een 'string' met aanhalingstekens</p>
-          <pre>
+        <pre>
             <span>Prelude> "abc" == ['a', 'b', 'c']</span>
             <span>True</span>
           </pre>
-          <h4>User Defined Types</h4>
-          <p>Het is natuurlijk ook mogelijk om je eigen types te maken in Haskell. Dit kan met het <code>data</code> keyword. Je kunt bijvoorbeeld een type Boolean maken op deze manier: </p>
-          <pre>
+        <h4>User Defined Types</h4>
+        <p>Het is natuurlijk ook mogelijk om je eigen types te maken in Haskell. Dit kan met het <code>data</code>
+          keyword. Je kunt bijvoorbeeld een type Boolean maken op deze manier: </p>
+        <pre>
             <span>data Boolean = True | False</span>
           </pre>
-          <p>Hier staat dus dat een boolean één waarde kan hebben. Deze waarde is óf True, óf False.</p>
-          <h4>Monads</h4>
-          <p>Dit onderwerp is lastig. Ik heb na de beschrijving van Seven Languages in Seven Weeks nog een aantal tutorials bekeken om Monads te begrijpen.</p>
-          <p>Het boek komt met een voorbeeld van een Dronken Piraat. Stel je voor dat er een piraat is dat een schatkaart moet maken. Hij is dronken, dus hij kiest een bekend punt en 
-            beweegt door middel van wankelen (stagger) en kruipen (crawl) naar de schat toe. </p>
-            <p>Een stagger beweegt twee stappen en een crawl beweegt één stap. In een imperatieve taal kan je de statements achter elkaar opschrijven. Hierbij is 'v' de waarde dat de afstand bevat van het originele punt.
-              Hieronder een voorbeeld:
-            </p>
-            <pre>
+        <p>Hier staat dus dat een boolean één waarde kan hebben. Deze waarde is óf True, óf False.</p>
+        <h4>Monads</h4>
+        <p>Dit onderwerp is lastig. Ik heb na de beschrijving van Seven Languages in Seven Weeks nog een aantal
+          tutorials bekeken om Monads te begrijpen.</p>
+        <p>Het boek komt met een voorbeeld van een Dronken Piraat. Stel je voor dat er een piraat is dat een schatkaart
+          moet maken. Hij is dronken, dus hij kiest een bekend punt en
+          beweegt door middel van wankelen (stagger) en kruipen (crawl) naar de schat toe. </p>
+        <p>Een stagger beweegt twee stappen en een crawl beweegt één stap. In een imperatieve taal kan je de statements
+          achter elkaar opschrijven. Hierbij is 'v' de waarde dat de afstand bevat van het originele punt.
+          Hieronder een voorbeeld:
+        </p>
+        <pre>
               <span>def treasure_map</span>
               <span>  v = stagger(v)</span>
               <span>  v = stagger(v)</span>
@@ -125,10 +180,11 @@
               <span>  return ( v )</span>
               <span>end</span>
             </pre>
-            <p>We hebben dus meerdere functies die aangeroepen worden binnen treasure_map dat onze state (de afstand) aanpast. Het probleem is dus dat we een muteerbare state hebben. 
-              Om dit probleem op te lossen in Haskell zouden we het volgende opschrijven:
-            </p>
-            <pre>
+        <p>We hebben dus meerdere functies die aangeroepen worden binnen treasure_map dat onze state (de afstand)
+          aanpast. Het probleem is dus dat we een muteerbare state hebben.
+          Om dit probleem op te lossen in Haskell zouden we het volgende opschrijven:
+        </p>
+        <pre>
               <span>stagger :: (Num t) => t -> t</span>
               <span>stagger d = d + 2</span>
               <span>crawl d = d + 1</span>
@@ -137,45 +193,51 @@
               <span>  stagger (</span>
               <span>  stagger d))</span>
             </pre>
-            <p>Dit is dus onhandig om te lezen. De statements zijn namelijk verkeerd om beschreven. We willen dus eigenlijk dat je de statements sequentieel kan opschrijven. We kunnen hiervoor een <code>let</code> expressie voor gebruiken:</p>
-            <pre>
+        <p>Dit is dus onhandig om te lezen. De statements zijn namelijk verkeerd om beschreven. We willen dus eigenlijk
+          dat je de statements sequentieel kan opschrijven. We kunnen hiervoor een <code>let</code> expressie voor
+          gebruiken:</p>
+        <pre>
               <span>letTreasureMap (v, d) = let d1 = stagger d</span>
               <span>                            d2 = stagger d1</span>
               <span>                            d3 = crawl d2</span>
               <span>                          in d3</span>
             </pre>
-            Note to self: schrijf het stukje over Monads nog verder uit.
-          <h2>Opdrachten</h2>
-          <p>Ik vond de opdrachten van deze dag extreem lastig. Met wat hulp kon ik de eerste opdracht oplossen. De rest van de opdrachten vond ik te lastig en heb daarom ik ook niet gemaakt.</p>
-          <p><i>Write a function that looks up a hash table value that uses the Maybe monad. Write a hash that stores other hashes, several levels deep. Use the Maybe monad to retrieve an element for a hash key several levels deep</i></p>
-          <p>De uitwerking van deze opdracht staat in <code>opdrachten/day3/hash.hs</code></p>
-          <pre>
+        Note to self: schrijf het stukje over Monads nog verder uit.
+        <h2>Opdrachten</h2>
+        <p>Ik vond de opdrachten van deze dag extreem lastig. Met wat hulp kon ik de eerste opdracht oplossen. De rest
+          van de opdrachten vond ik te lastig en heb daarom ik ook niet gemaakt.</p>
+        <p><i>Write a function that looks up a hash table value that uses the Maybe monad. Write a hash that stores
+            other hashes, several levels deep. Use the Maybe monad to retrieve an element for a hash key several levels
+            deep</i></p>
+        <p>De uitwerking van deze opdracht staat in <code>opdrachten/day3/hash.hs</code></p>
+        <pre>
             <span>fetch key [] = Nothing</span>
             <span>fetch key ((k, value):rest)</span> 
             <span>  | key == k = Just value</span> 
             <span>  | otherwise = fetch key rest</span>
           </pre>
-          <p>In deze functie wordt er over een lijst van key pairs geïtereerd en als de waarde is gevonden, wordt deze geretourneerd. Als de lijst leeg is dan wordt er <code>Nothing</code> teruggegeven.</p>
-          <hr>
-        </div>
+        <p>In deze functie wordt er over een lijst van key pairs geïtereerd en als de waarde is gevonden, wordt deze
+          geretourneerd. Als de lijst leeg is dan wordt er <code>Nothing</code> teruggegeven.</p>
+        <hr>
       </div>
-      <!-- /.row -->
+    </div>
+    <!-- /.row -->
 
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
     </div>
     <!-- /.container -->
+  </footer>
 
-    <!-- Footer -->
-    <footer class="py-5 bg-dark">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
-      </div>
-      <!-- /.container -->
-    </footer>
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  </body>
+</body>
 
 </html>

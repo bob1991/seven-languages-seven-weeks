@@ -84,8 +84,11 @@
 
         <!-- Post Content -->
         <p>Deze pagina zal mijn Programmeer uitdaging 'Sodoku Solver' verder toelichten. De code van de Sudoku Solver
-          is the vinden op <a href="https://github.com/bob1991/seven-languages-seven-weeks">github</a>.
-          De code is ook bijgevoegd deze is te vinden in de bijgevoegde map.
+          is the vinden op <a href="https://github.com/bob1991/seven-languages-seven-weeks">github</a> of
+          De code is ook bijgevoegd deze is te vinden in de <a href="../../sudoku/"> bijgevoegde map.</a>
+          <br>
+          Het project is een sbt project. dat is gemaakt met IntelliJ. Om het programma te draaien is sbt commandl ine
+          nodig of IntelliJ IDE.
         </p>
 
         <h2>Sodoku grid</h2>
@@ -93,142 +96,99 @@
           Voor de sudoku grid heb ik gekozen voor een twee dimensionale list van arrays.
         </p>
 
-        <h2>Het verkrijgen van data</h2>
-        <p>Om een subreddit te bezoeken, wordt de naam van de subreddit achter <code>https://reddit.com/r/</code>
-          geplaatst. De url voor de ProgrammerHumor subreddit is <code>https://www.reddit.com/r/ProgrammerHumor</code>.
-          De meest populaire posts van die dag worden onder de categorie 'hot' geplaatst.</p>
-        <p>Door '.json' achter de url van een subreddit te plaatsen, wordt de json representatie van die subreddit
-          weergegven. Hierdoor is het mogelijk om met Haskell de data uit te lezen en deze weer te geven op een
-          html-pagina.
-          Uiteindelijk wordt de url als volgt: <code>https://www.reddit.com/r/ProgrammerHumor/hot/.json</code>. Met
-          deze resultaten kunnen we aan de slag.</p>
+        <h2>Ophalen van row column en square</h2>
+        <p>
+          Omdat je checks bij een Sodoku moet doen op een kolom, row en een vierkan wilde ik zorgen dat ik gegeven een
+          x en y positie in de sodoku de bij behorende kolom rij en vierkant kon ophalen. <br>
 
-        <h3>Het dataformaat</h3>
-        <p>Om de Reddit data te gebruiken, maak ik een Datatype aan. De constructor heeft 6 parameters, die allemaal
-          van het type Data.Text zijn.</p>
-        <img src="img/opdracht_2.PNG" alt="code">
-        <p>Ik heb Data.Text geïmporteerd als T, omdat er functies zijn van Data.Text die conflicteren met andere
-          functies. We zetten <code>deriving (Show)</code> achter het datatype zodat we dit datatype kunnen printen
-          naar de console</p>
-        <p>Een verzameling van Reddit Posts is een Listing, dus daar maak ik ook een datatype van.</p>
-        <img src="img/opdracht_3.PNG" alt="code">
+          Het ophalen van een rij was makkelijk. gegeven de sodoku de waarde van x is de rij <br>
+          <code>
+            def getRow(grid: List[List[Int]],row : Int): List[Int] = { <br>
+              grid(row); <br>
+            } <br>
+          </code><br>
+          Het ophalen van de column was iets lastiger. De lijst voor iedere rij het nummer van Y zie onderstaande
+          <code>
+            <br>
+            def getColumn(grid: List[List[Int]], column: Int): List[Int] = { <br>
+              List( <br>
+                grid(0)(column), <br>
+                grid(1)(column), <br>
+                grid(2)(column), <br>
+                grid(3)(column), <br>
+                grid(4)(column), <br>
+                grid(5)(column),<br>
+                grid(6)(column),<br>
+                grid(7)(column),<br>
+                grid(8)(column) <br>
+              );<br>
+            } <br>
+          </code>
+          Het ophalen van het vierkant was nog het lastigst. Hierbij heb ik nagedacht dat als ik de x en y positie
+          allebei op 0 heb dan kan ik het vierkant ophalen door middel van. <br>
+          0,0 0,1 0,2 <br>
+          1,0 1,1 1,2 <br>
+          2,0 2,1 2,2 <br>
 
-        <h3>Data ophalen bij Reddit</h3>
-        <p>Hieronder staat de code voor de <code>getReddit</code> methode. Deze methode verwacht een parameter
-          'subreddit' en retourneert een Listing van die subreddit.
-          Dit resultaat krijgen we door een simpele String concatenatie te doen door middel van de '<>' tekens.
-            Vervolgens kunnen we met </p>
-        <img src="img/opdracht_4.PNG" alt="code">
+          Hiervoor heb ik deze code bedacht: <br>
 
-        <h2>Opzetten van een webserver</h2>
-        <p>Om de data weer te kunnen geven in de browser, maak ik gebruik van het framework <a href="https://www.spock.li/">Spock</a>.
-          Met Spock is het heel gemakkelijk om een kleine webapplicatie op te zetten.
-          Hieronder volgt de code om de server op te zetten.</p>
-        <img src="img/opdracht_1.PNG" alt="code">
-        <p>De functie <code>startServer</code> doet een aantal dingen. Als eerste start het een HTTP server op <code>localhost:8080</code>.
-          Met de <code>$</code>-operator kunnen we methoden aan elkaar plakken.
-          Dit is zodat we niet zoveel haakjes hoeven te schrijven. Met <code>do get "reddits" $ do</code> maken we een
-          get actie aan genaamd 'reddit'.
-          Daarna kunnen we <code>reddits <- param "reddits"</code> maken we een get parameter aan genaamd reddits. We
-          kunnen dus nu de volgende url opbouwen: <code>localhost:8080/reddit?reddits={subredditnaam}</code>.</p>
+          <code>
+              def getSquareFromGrid(grid: List[List[Int]], row: Int, column: Int): List[Int] = { <br>
+                val startingRow = row - (row % 3); <br>
+                val startingColumn = column - (column % 3); <br>
+            <br>
+                List(<br>
+                  grid(startingRow)(startingColumn),<br>
+                  grid(startingRow)(startingColumn + 1),<br>
+                  grid(startingRow)(startingColumn + 2),<br>
+                  grid(startingRow + 1)(startingColumn),<br>
+                  grid(startingRow + 1)(startingColumn + 1),<br>
+                  grid(startingRow + 1)(startingColumn + 2),<br>
+                  grid(startingRow + 2)(startingColumn),<br>
+                  grid(startingRow + 2)(startingColumn + 1),<br>
+                  grid(startingRow + 2)(startingColumn + 2) <br>
+                )          <br>
+              } <br>
+          </code>
+          Gegeven een X en Y positie waarbij x - (x % 3) en y - (y % 3)
+          Beginnen we altijd op de juiste plaats. <br> <br>
 
-        <p>Met <code>Nothing -> text "No Reddits Provided"</code> kunnen we een error geven als er geen subreddits zijn
-          ingevuld. Als we dit in de browser checken dan zien we ook dat dit werkt.</p>
-        <img src="img/opdracht_5.PNG" alt="code">
-        <p>Als er vervolgens iets ingevuld is, kunnen we proberen om de bijbehorende subreddits op te zoeken.
-          We maken een lijst door de parameters van de url te splitten op een komma. Dit kan met de <code>splitOn "," reddits</code>
-          methode.
-          Met deze lijst kunnen we de data van de subreddits gaan ophalen.</p>
-        <h3>Het inladen van een subreddit</h3>
-        <p>Het onderstaande stukje code vind ik erg cool. De methode <code>getReddits</code> krijgt een lijst van
-          subreddits binnen en roept de <code>getReddit</code> methode aan die we eerder hebben gezien.
-          Echter gebeurt er nog iets. De methode <code>mapConcurrently</code> haalt voor elk item in de <code>reddits</code>
-          lijst de <code>listing</code> op. Dit proces verloopt asynchroon. De <code>mapConcurrently</code> methode
-          wacht tot hij alle subreddits heeft binnengehaald en vervolgens wordt het resultaat aan de <code>listings</code>
-          variabele gebonden.
-          Vervolgens roepen we <code>mergeListings</code> aan om alle resultaten te bundelen. Het resultaat van
-          mapConcurrenly is een <code>Listing</code>, maar geen <code>IO Listing</code>, deze zetten we om door middel
-          van de <code>pure</code> methode.</p>
-        <img src="img/opdracht_6.PNG" alt="code">
+          Hiermee kunnen alle onderdelen van een sodoku worden opgehaald.
+        </p>
+
+
+        <h2>Backtrackin algoritme</h2>
+        <p>
+          Het backtrack algoritme is een brute force voor het oplossen van een sudoku.
+          Het begint in de eerste cel met cijfer 1. Hier wordt gekeken of het cijfer ingevoerd mag worden.
+          Door de rij kolom en vierkant op te halen en te kijken of het nummer al bestaat.
+          Wanneer het nummer niet in een van deze 3 bestaat wordt het cijfer ingevult en wordt er aan een stack de x en
+          y en het ingevulde cijfer toegevoegd.
+          Wanneer het al wel bestaat wordt het cijfer opgehoogd met 1 en wordt er opnieuw gekeken of die ingevoerd mag
+          worden.
+          Wanneer het cijfer voorbij de 9 gaat en dus geen geldige waarde meer is voor de sudoku is er ergens iets
+          verkeerd ingevuld en beginnen we met backtracken.
+          Dit doen we door de x,y en de ingevulde waarde van de stack te halen. nu gaan we in de cell gegeven de x en y
+          waarde het cijfer in te uvllen maar dan +1. Daarna gaan we verder met het oplossen van de sudoku.
+        </p>
+        <p>
+          Hoe dat in code eruit ziet is te vinden in deze file <a href="../../sudoku/src/main/scala/SolveSudokuBacktracking.scala">backtracking
+            algoritme</a> <br> <br>
+
+          Dit algoritme kan de meest moeilijke sudoku's oplossen.
+        </p>
+
+        <h2>Zoals een mens oplossen</h2>
+        <p>De sudoku oplossen als mens. gebeurt door te kijken of er maar 1 nummer mogelijk is in een cell.
+          Hierbij wordt er gekeken naar welke nummers mogelijk zijn in de rij, kolom en vierkant.
+          Hierbij worden deze 3 collecties met elkaar vergeleken. De nummers die overeenkomen blijven staan de nummers
+          die niet overeenkomen worden eruit gefilterd.
+          Wanneer er een list van 1 overblijft betekent dat alleen dit nummer ingevuld kan worden in de cell.
+          <br>
+          Hoe dat eruit ziet in code is te vinden in <a href="../../sudoku/src/main/scala/SolveSudokuHumanMind.scala">sudoku
+            als mens oplossen</a>
+        </p>
         <hr>
-        <h3>Bundelen van de resultaten</h3>
-        <p>Na het inladen van de reddits bundelen we de resultaten met de <code>mergeListings</code> methode. In de
-          <code>getReddits</code> methode krijgen we een lijst met daarin een lijst van de resultaten van elke
-          subreddit.
-          Deze lijst van lijsten moet ik eerst omzetten naar een enkele lijst van alleen posts. Het leek mij
-          interessant om de posts van elke subreddit door elkaar heen te halen. Zo zie je niet de hele tijd alle posts
-          van één reddit achter elkaar.
-          De onderstaande afbeelding illustreert dit scenario. Aan de linkerzijde staan de lijsten van subreddits met
-          daarin alle posts. Aan de rechterzijde staat de enkele lijst van posts die door elkaar heen zijn gehaald.</p>
-        <img src="img/opdracht_7.PNG" alt="code">
-        <p>Door middel van de <code>mergeListings</code> methode wordt dit proces gerealiseerd. Om te beginnen halen we
-          alle posts uit de lijst van Listings. Dit kan met de <code>map</code> functie. </p>
-        <img src="img/opdracht_8.PNG" alt="code">
-        <p>Nu we alle posts hebben, gaan we de volgorde door elkaar halen. Dit kan met de <code>transpose</code>
-          functie.</p>
-        <img src="img/opdracht_9.PNG" alt="code">
-        <p>Nadat de lijsten door elkaar heen zijn gehaald, concateneren we alle lijsten bij elkaar zodat we één lijst
-          krijgen. Dit kan met de <code>concat</code> functie.</p>
-        <img src="img/opdracht_10.PNG" alt="code">
-        <p>Als we dit allemaal samenvoegen, krijgen we de functie <code>mergeListings</code>. </p>
-        <img src="img/opdracht_11.PNG" alt="code">
-        <h3>Het weergeven op de pagina</h3>
-        <p>Om de resultaten weer te geven maak ik gebruik van Bootstrap. De methode <code>bootstrap</code> laadt dit
-          simpelweg in als de stylesheet van de pagina.</p>
-        <img src="img/opdracht_12.PNG" alt="code">
-        <p>Om gemakkelijk gebruik te maken van Bootstrap, wordt de methode <code>colMd</code> het leven in geroepen.
-          Deze verwacht een integer en maakt hier de bijpassende Bootstrap column div bij.</p>
-        <img src="img/opdracht_13.PNG" alt="code">
-        <p>Vervolgens wil ik ook de Thumbnail bij de post tonen als deze bestaat. Hiervoor maak ik een methode die de
-          URL van een afbeelding verwacht. Daarna maak ik een variabele die ervoor zorgt dat er in een Bootstrap column
-          1 een afbeelding wordt gegenereerd.
-          De afbeelding wordt alleen gerenderd als deze bestaat. Dit kan ik checken door <code>T.breakOn</code> te
-          gebruiken op '://'. Als het resultaat hiervan 'http' of 'https' is, dan zal het een afbeelding zijn. Is dit
-          niet het geval, dan render ik een lege column.
-          In Haskell kan ik in een case block met '_' aangeven dat alle overige gevallen behandeld worden.
-        </p>
-        <img src="img/opdracht_14.PNG" alt="code">
-        <p>Nu kan ik een post gaan renderen. In de methode <code>renderPost</code> kan ik de 'do'-syntax gebruiken om
-          een HTML pagina te maken.
-          Het eerste stuk van de Post zal een afbeelding en de titel bevatten. De titel linkt gelijk door naar de
-          inhoud van de Post. Het tweede stuk zal Score, Subreddit en Auteur weergeven.</p>
-        <img src="img/opdracht_15.PNG" alt="code">
-        <p>Om alle Posts van een Listing te renderen wordt de <code>viewListing</code> methode gebruikt. Deze voert een
-          map-functie waarmee <code>renderPost</code> wordt aangeroepen op elke Post in een Listing.
-          Hier komt een lijst van HTML types uit (dus [HTML]). Dit is niet wat we nodig hebben. De webpagina bestaat
-          namelijk uit één HTML type. Om hier één HTML type van te maken, wordt de methode <code>mconcat</code>
-          gebruikt.
-          Deze voegt alle HTML types samen.
-        </p>
-        <h2>Het resultaat</h2>
-        <p>Na dit allemaal is het eindelijk mogelijk om de Subreddits in te laden. Ik laad het bestand <code>RedditReader.hs</code>
-          in met GHCI en ik voer de methode <code>startServer</code> uit.
-          Vervolgens typ ik in de browser <code>localhost:8080/reddit?reddits=ProgrammerHumor,Funny,Netherlands</code>
-          en alle subreddits worden ingeladen! Zie hieronder het resultaat.</p>
-        <img src="img/opdracht_16.PNG" alt="code">
-        <h2>Terugblik</h2>
-        <p>Ik ben tevreden met resultaat van de Programmeerchallenge. De Reddit Reader was leuk om te maken en ik vond
-          dat het een aantal dingen van Haskell goed naar voren bracht.
-          Ik vond met name de methode <code>mergeListings</code> het interessants. Toen ik het proces van samenvoegen
-          had uitgedacht, was het programmeren een fluitje van een cent. Ik zocht de bijbehorende functies op zoals
-          <code>transpose</code> en <code>concat</code> en het werkt allemaal magisch met elkaar.
-          Ook de methode <code>renderPost</code> vond ik interessant. De manier om dit op te schrijven met de <code>do</code>-syntax
-          is erg leesbaar in mijn ogen.
-        </p>
-        <p>Toch vond ik Haskell een lastige taal om in te programmeren. Toen ik klaar was met de drie dagen uit het
-          Seven Languages in Seven Weeks boek, had ik echt het idee dat ik nog niks met de taal kon.
-          Pas na een aantal tutorials op het internet voelde ik me pas klaar om iets te graan programmeren. In
-          verhouding tot Java is Haskell niet echt een populaire taal, dus ik vond het ook lastig om goede voorbeelden
-          te vinden als ik ergens niet uitkwam.
-          Ook werden er in de codevoorbeelden veel gebruik gemaakt van variabelen met een enkele letter. Hierdoor vond
-          ik vaak lastig om te lezen wat er nu allemaal gebeurt.
-        </p>
-        <p>Deze opdracht heeft mij veel geleerd. Doordat je in Haskell niet kan terugvallen op for-loops of objecten,
-          ben je verplicht op een functionele manier de problemen op te lossen.
-          Met name de methodes die operaties op arrays uitvoeren vond ik heel erg interessant. Als ik dan kijk hoeveel
-          moeite het kost om dit in Java te doen dan ben ik toch echt wel onder de indruk van de mogelijkheden met
-          Haskell.
-        </p>
       </div>
     </div>
     <!-- /.row -->
